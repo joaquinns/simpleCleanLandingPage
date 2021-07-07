@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Landing page</title>
+	<link rel="stylesheet" href="index.css">
+</head>
+<body>
+	<header class="navbar">
+		<div class="navbar-container">
+			<a class="logo" href="#">Remember<span>Logo</span></a>
+
+			<img id="mobile-cta" class="mobile-menu" src="images/menu.svg" alt="mobiles menu">
+
+			<nav>
+				<img id="mobile-exit" src="images/exit.svg" class="mobile-menu-exit" alt="mobiles menu exit">
+				<ul class="primary-nav">
+					<li class="current"><a href="#">Home</a></li>
+				</ul>
+
+				<ul class="secondary-nav">
+					<li><a href="#">Contact</a></li>
+					<li class="go-premium-cta"><a href="#">Go premium</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<section class="hero">
+		<div class="container">
+			<div class="left-col">
+				<p class="subhead">Lorem ipsum &amp; sore</p>
+				<h1>A task app you need that doesn't stink</h1>
+
+				<div class="hero-cta">
+					<a href="#" class="primary-cta">Try it for free</a>
+					<a href="#" class="watch-video-cta">
+						Watch a video<img src="images/watch.svg" alt="watch a video">
+					</a>
+				</div>
+			</div>
+
+			<img class="hero-img" src="images/illustration.svg" alt="hero illustration">
+		</div>
+	</section>
+
+	<section class="features-section">
+		<div class="container">
+			<ul class="features-list">
+				<li>Lorem, ipsum dolor.</li>
+				<li>Lorem, ipsum dolor.</li>
+				<li>Lorem, ipsum dolor.</li>
+				<li>Lorem, ipsum dolor.</li>
+				<li>Lorem, ipsum dolor.</li>
+				<li>Lorem, ipsum dolor.</li>
+			</ul>
+
+			<img id="features-img" src="images/holding-phone.jpg" alt="A man holding phone">
+		</div>
+	</section>
+
+	<section class="testimonials-section">
+		<div class="container">
+			<ul>
+				<li>
+					<img src="images/person.jpg" alt="person">
+					<blockquote>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius, nisi.</blockquote>
+					<cite>- Janis Doe</cite>
+				</li>
+				<li>
+					<img src="images/person.jpg" alt="person">
+					<blockquote>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius, nisi.</blockquote>
+					<cite>- Janis Doe</cite>
+				</li>
+				<li>
+					<img src="images/person.jpg" alt="person">
+					<blockquote>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius, nisi.</blockquote>
+					<cite>- Janis Doe</cite>
+				</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="contact-section">
+		<div class="container">
+			<div class="contact-left">
+				<div class="contact-form">
+					<h2>Contact</h2>
+	
+					<form action="#">
+						<label for="name">Name</label>
+						<input type="text" name="name" id="name" placeholder="Your name">
+	
+						<label for="email">Email</label>
+						<input type="email" name="email" id="email" placeholder="example@example.com">
+	
+						<label for="message">Message</label>
+						<textarea name="message" id="message" cols="30" rows="10"></textarea>
+	
+						<input type="submit" class="send-message-cta" value="Send message">
+					</form>
+				</div>
+			</div>
+
+			<div class="contact-right">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d201914.58238801867!2d-122.5165729282874!3d37.74513008991384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan%20Francisco%2C%20California%2C%20EE.%20UU.!5e0!3m2!1ses!2sve!4v1625250362656!5m2!1ses!2sve" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+			</div>
+		</div>
+	</section>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.0/gsap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.0/ScrollTrigger.min.js"></script>
+	<script>
+		const mobileBtn = document.getElementById('mobile-cta')
+		let nav = document.querySelector('nav')
+		let mobileBtnExit = document.getElementById('mobile-exit')
+		
+		//open menu
+		mobileBtn.addEventListener('click', () => {
+			nav.classList.add('menu-btn')
+			gsap.from('.menu-btn', {opacity: 0, duration: 0.1, x: 50, ease: 'power.in'})
+		})
+		//exit menu
+		mobileBtnExit.addEventListener('click', () => {
+			nav.classList.remove('menu-btn')
+		})
+
+		// GSAP animation
+		gsap.from('.left-col', {opacity: 0, duration: 1.5, y:-60, ease: 'power2', stagger: 0.6})
+		gsap.from('.hero-img', {opacity: 0, duration: 1.1, x: 140, stagger: 0.3})
+
+		let tl = gsap.timeline({
+			scrollTrigger: {
+				trigger: 'features-section',
+				start: '580',
+			}
+		})
+
+		tl.from('#features-img', {x: 200, opacity: 0, duration: 1})
+
+
+	</script>
+</body>
+</html>
